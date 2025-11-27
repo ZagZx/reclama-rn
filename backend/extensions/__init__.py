@@ -6,18 +6,18 @@ from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
 
-def init_env():
+def init_env(path = "../.env"):
     from secrets import token_hex
-    from os import path
+    import os
 
 
-    if not path.exists(".env"):
-        variables = f"""
-        DATABASE = "sqlite:///database.db"
-        SECRET_KEY = "{token_hex()}"
-        """
-        
-        with open(".env", "w") as env:
+    if not os.path.exists(path):
+        variables = ""
+        variables += 'DATABASE = "sqlite:///database.db"\n'
+        variables += f'SECRET_KEY = "{token_hex()}"\n'
+        variables += 'BACKEND_URL = "localhost:5000"'
+                
+        with open(path, "w") as env:
             env.write(variables)
     
 
@@ -29,9 +29,9 @@ def init_db(app: Flask):
 
 
 login_manager = LoginManager()
-login_manager.login_view = "user.login"
+login_manager.login_view = "auth.login"
 login_manager.login_message = "Faça login para realizar essa ação"
-login_manager.login_message_category = "warning"
+login_manager.login_message_category = "error"
 
 
 @login_manager.user_loader
