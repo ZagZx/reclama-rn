@@ -34,7 +34,7 @@ def login():
 
     user = User.query.filter_by(email=email).first()
     if not user or not check_password_hash(user.password_hash, password):
-        return jsonify({"message": "Email ou senha incorreta"}), 404
+        return jsonify({"message": "Email ou senha incorreta"}), 401
 
     if login_user(user):
         return jsonify({"message": "Login realizado"}), 200
