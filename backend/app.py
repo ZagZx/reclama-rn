@@ -20,7 +20,9 @@ db.init_app(app)
 init_db(app)
 
 api_bp = Blueprint('api', __name__, url_prefix='/api') # todas as rotas começam com /api
-from backend.controllers.auth import auth_bp
+from backend.controllers.auth_controller import auth_bp
+from backend.controllers.reclamacoes_controller import reclamacoes_bp
 api_bp.register_blueprint(auth_bp)
+api_bp.register_blueprint(reclamacoes_bp)
 
 app.register_blueprint(api_bp)
