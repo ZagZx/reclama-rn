@@ -22,3 +22,6 @@ nohup: ignorando entrada
  GET /cadastro 200 in 375ms (compile: 353ms, render: 22ms)
  GET / 200 in 45ms (compile: 5ms, render: 40ms)
  GET /login 200 in 32ms (compile: 12ms, render: 19ms)
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[dotenv@17.2.3] injecting env (0) from ../.env -- tip: 📡 add observability to secrets: https://dotenvx.com/ops
+[?25h
