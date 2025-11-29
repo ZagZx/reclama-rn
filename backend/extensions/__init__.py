@@ -12,14 +12,14 @@ def init_env(path = "../.env"):
 
 
     if not os.path.exists(path):
-        variables = ""
-        variables += 'DATABASE = "sqlite:///database.db"\n'
-        variables += f'SECRET_KEY = "{token_hex()}"\n'
-        variables += 'BACKEND_URL = "http://localhost:5000"\n'
-        variables += 'FRONTEND_URL = "http://localhost:3000"'
-                
+        variables = []
+        variables.append(f'DATABASE="sqlite:///database.db"')
+        variables.append(f'SECRET_KEY="{token_hex()}"')
+        variables.append('BACKEND_URL="http://localhost:5000"')
+        variables.append('FRONTEND_URL="http://localhost:3000"')
+
         with open(path, "w") as env:
-            env.write(variables)
+            env.write("\n".join(variables) + "\n")
     
 
 def init_db(app: Flask):
@@ -39,6 +39,8 @@ login_manager = LoginManager()
 def load_user(user_id):
     from backend.models import User
 
-    user = User.query.get(int(user_id))
-
-    return user
+    # Use session.get for SQLAlchemy 2.x compatibility
+    try:
+        return db.session.get(User, int(user_id))
+    except Exception:
+        return None

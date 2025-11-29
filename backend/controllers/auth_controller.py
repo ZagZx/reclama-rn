@@ -9,9 +9,13 @@ auth_bp = Blueprint('auth', __name__)
 
 @auth_bp.route('/cadastro', methods=['POST'])
 def register():
-    username = request.json.get("username")
-    email = request.json.get("email")
-    password = request.json.get("password")
+    data = request.get_json() or {}
+    username = data.get("username")
+    email = data.get("email")
+    password = data.get("password")
+
+    if not username or not email or not password:
+        return jsonify({"message": "Campos obrigatórios: username, email, password"}), 400
 
     user = User.query.filter_by(email=email).first()
     if user:
@@ -29,8 +33,12 @@ def register():
 
 @auth_bp.route('/login', methods=['POST'])
 def login():
-    email = request.json.get("email")
-    password = request.json.get("password")
+    data = request.get_json() or {}
+    email = data.get("email")
+    password = data.get("password")
+
+    if not email or not password:
+        return jsonify({"message": "Campos obrigatórios: email, password"}), 400
 
     user = User.query.filter_by(email=email).first()
     if not user or not check_password_hash(user.password_hash, password):

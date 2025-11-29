@@ -1,0 +1,24 @@
+nohup: ignorando entrada
+
+> frontend@0.1.0 dev
+> next dev
+
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[dotenv@17.2.3] injecting env (0) from ../.env -- tip: ⚙️  specify custom .env file path with { path: '/custom/path/.env' }
+   ▲ Next.js 16.0.3 (Turbopack)
+   - Local:         http://localhost:3000
+   - Network:       http://192.168.0.109:3000
+   - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 830ms
+ GET / 200 in 65ms (compile: 14ms, render: 51ms)
+ GET / 200 in 45ms (compile: 3ms, render: 42ms)
+ GET / 200 in 42ms (compile: 1988µs, render: 40ms)
+ GET / 200 in 60ms (compile: 5ms, render: 54ms)
+ GET / 200 in 57ms (compile: 15ms, render: 43ms)
+ GET / 200 in 19ms (compile: 3ms, render: 16ms)
+ GET /login 200 in 444ms (compile: 420ms, render: 23ms)
+ GET /cadastro 200 in 375ms (compile: 353ms, render: 22ms)
+ GET / 200 in 45ms (compile: 5ms, render: 40ms)
+ GET /login 200 in 32ms (compile: 12ms, render: 19ms)
