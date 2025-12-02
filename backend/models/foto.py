@@ -36,8 +36,8 @@ class FotoReclamacao(db.Model):
         return {
             'id': self.id,
             'url': self.url,
-            'nome_arquivo': self.nome_arquivo,
-            'data_upload': self.data_upload.isoformat() if self.data_upload else None
+            'nomeArquivo': self.nome_arquivo,
+            'dataUpload': self.data_upload.isoformat() if self.data_upload else None
         }
 
 
@@ -68,6 +68,6 @@ class ProvaContestacao(db.Model):
         return {
             'id': self.id,
             'url': self.url,
-            'nome_arquivo': self.nome_arquivo,
-            'data_upload': self.data_upload.isoformat() if self.data_upload else None
+            'nomeArquivo': self.nome_arquivo,
+            'dataUpload': self.data_upload.isoformat() if self.data_upload else None
         }

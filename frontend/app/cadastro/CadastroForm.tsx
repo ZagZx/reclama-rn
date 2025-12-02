@@ -15,9 +15,9 @@ export default function CadastroForm() {
     const form = e.currentTarget;
     const formData = new FormData(form);
     const data = {
-      username: String(formData.get("username")),
+      username: String(formData.get("nome")),
       email: String(formData.get("email")),
-      password: String(formData.get("password"))
+      password: String(formData.get("senha"))
     };
 
     const result = await cadastroAction(data);
@@ -29,14 +29,14 @@ export default function CadastroForm() {
 
   return (
     <form onSubmit={onSubmit}>
-      <label htmlFor="username">Nome</label>
-      <input type="text" id="username" name="username" required />
+      <label htmlFor="nome">Nome</label>
+      <input type="text" id="nome" name="nome" required />
 
       <label htmlFor="email">Email</label>
       <input type="email" id="email" name="email" required />
 
-      <label htmlFor="password">Senha</label>
-      <input type="password" id="password" name="password" required />
+      <label htmlFor="senha">Senha</label>
+      <input type="password" id="senha" name="senha" required />
 
       <button type="submit" disabled={isSubmitting}>
         {

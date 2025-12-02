@@ -1,19 +1,17 @@
-from flask import Flask
+from flask import Flask, Blueprint
 from flask_cors import CORS
-from os import getenv
 from dotenv import load_dotenv
+from os import getenv
 from backend.extensions import init_db, init_env, db, login_manager
-from flask import Blueprint
 
 init_env()
 load_dotenv("../.env")
-
-FRONTEND_URL = getenv("FRONTEND_URL")
 
 app = Flask(__name__)
 app.secret_key = getenv("SECRET_KEY")
 app.config["SQLALCHEMY_DATABASE_URI"] = getenv("DATABASE")
 
+FRONTEND_URL = getenv("FRONTEND_URL")
 CORS(app, resources={r"/*": {"origins": FRONTEND_URL}}, supports_credentials=True)
 login_manager.init_app(app)
 db.init_app(app)

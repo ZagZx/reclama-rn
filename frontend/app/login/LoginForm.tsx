@@ -18,7 +18,7 @@ export default function LoginForm() {
     const formData = new FormData(form);
     const data = {
       email: String(formData.get("email")),
-      password: String(formData.get("password")),
+      password: String(formData.get("senha")),
     };
 
     const result = await loginAction(data);
@@ -35,8 +35,8 @@ export default function LoginForm() {
       <label htmlFor="email">Email</label>
       <input type="text" id="email" name="email" required />
 
-      <label htmlFor="password">Senha</label>
-      <input type="password" id="password" name="password" required />
+      <label htmlFor="senha">Senha</label>
+      <input type="password" id="senha" name="senha" required />
 
       <button type="submit" disabled={isSubmitting}>
         {

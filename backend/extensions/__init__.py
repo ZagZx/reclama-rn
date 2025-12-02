@@ -37,8 +37,8 @@ login_manager = LoginManager()
 
 @login_manager.user_loader
 def load_user(user_id):
-    from backend.models import User
+    from backend.models import Usuario
 
-    user = User.query.get(int(user_id))
+    user = Usuario.query.get(int(user_id))
 
     return user

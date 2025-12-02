@@ -8,13 +8,13 @@ from backend.extensions import db
 if TYPE_CHECKING:
     from .contestacao import Contestacao
     from .foto import FotoReclamacao
-    from .user import User
+    from .usuario import Usuario
 
 
 class StatusReclamacao(enum.Enum):
-    PENDENTE = "pendente"
-    RESOLVIDA = "resolvida"
-    CONTESTADA = "contestada"
+    PENDENTE = "Pendente"
+    RESOLVIDA = "Resolvida"
+    CONTESTADA = "Contestada"
 
 
 class Reclamacao(db.Model):
@@ -33,8 +33,8 @@ class Reclamacao(db.Model):
         nullable=False
     )
     
-    usuario_id: Mapped[int] = mapped_column(ForeignKey('user.id'), nullable=False)
-    usuario: Mapped["User"] = relationship("User", back_populates="reclamacoes")
+    usuario_id: Mapped[int] = mapped_column(ForeignKey('usuarios.id'), nullable=False)
+    usuario: Mapped["Usuario"] = relationship("Usuario", back_populates="reclamacoes")
     
     data_criacao: Mapped[datetime] = mapped_column(
         DateTime,
@@ -71,11 +71,11 @@ class Reclamacao(db.Model):
             'latitude': self.latitude,
             'longitude': self.longitude,
             'status': self.status.value if isinstance(self.status, StatusReclamacao) else self.status,
-            'usuario_id': self.usuario_id,
-            'autor': self.usuario.username,
-            'data_criacao': self.data_criacao.isoformat() if self.data_criacao else None,
-            'data_resolucao': self.data_resolucao.isoformat() if self.data_resolucao else None,
-            'data_atualizacao': self.data_atualizacao.isoformat() if self.data_atualizacao else None,
+            'usuarioId': self.usuario_id,
+            'autor': self.usuario.nome,
+            'dataCriacao': self.data_criacao.isoformat() if self.data_criacao else None,
+            'dataResolucao': self.data_resolucao.isoformat() if self.data_resolucao else None,
+            'dataAtualizacao': self.data_atualizacao.isoformat() if self.data_atualizacao else None,
             'fotos': [foto.to_dict() for foto in self.fotos],
             'contestacoes': [c.to_dict() for c in self.contestacoes]
         }

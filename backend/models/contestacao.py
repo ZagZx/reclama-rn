@@ -8,7 +8,7 @@ from backend.extensions import db
 if TYPE_CHECKING:
     from .foto import ProvaContestacao
     from .reclamacao import Reclamacao
-    from .user import User
+    from .usuario import Usuario
 
 
 class Contestacao(db.Model):
@@ -28,8 +28,8 @@ class Contestacao(db.Model):
     )
     
     # Relacionamento com usuário que contestou a reclamacao 
-    usuario_id: Mapped[int] = mapped_column(ForeignKey('user.id'), nullable=False)
-    usuario: Mapped["User"] = relationship("User", back_populates="contestacoes")
+    usuario_id: Mapped[int] = mapped_column(ForeignKey('usuarios.id'), nullable=False)
+    usuario: Mapped["Usuario"] = relationship("Usuario", back_populates="contestacoes")
     
     # Timestamp (data da contestação)
     data_contestacao: Mapped[datetime] = mapped_column(
@@ -49,9 +49,9 @@ class Contestacao(db.Model):
         return {
             'id': self.id,
             'motivo': self.motivo,
-            'reclamacao_id': self.reclamacao_id,
-            'usuario_id': self.usuario_id,
+            'reclamacaoId': self.reclamacao_id,
+            'usuarioId': self.usuario_id,
             'autor': self.usuario.username,
-            'data_contestacao': self.data_contestacao.isoformat() if self.data_contestacao else None,
+            'dataContestacao': self.data_contestacao.isoformat() if self.data_contestacao else None,
             'provas': [prova.to_dict() for prova in self.provas]
         }

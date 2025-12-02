@@ -9,13 +9,13 @@ if TYPE_CHECKING:
     from .contestacao import Contestacao
 
 # utilizando UserMixin para integração com Flask-Login no projetinho
-class User(db.Model, UserMixin):
-    __tablename__ = 'user'
+class Usuario(db.Model, UserMixin):
+    __tablename__ = 'usuarios'
     
     id: Mapped[int] = mapped_column(primary_key=True)
-    username: Mapped[str] = mapped_column(String(255), nullable=False)
+    nome: Mapped[str] = mapped_column(String(255), nullable=False)
     email: Mapped[str] = mapped_column(String(255), nullable=False, unique=True)
-    password_hash: Mapped[str] = mapped_column(String(255), nullable=False)
+    senha_hash: Mapped[str] = mapped_column(String(255), nullable=False)
     
     reclamacoes: Mapped[list["Reclamacao"]] = relationship(
         "Reclamacao",
@@ -32,6 +32,6 @@ class User(db.Model, UserMixin):
     def to_dict(self):
         return {
             'id': self.id,
-            'username': self.username,
+            'nome': self.nome,
             'email': self.email
         }
