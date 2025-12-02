@@ -47,20 +47,25 @@ interativo com dados de reclamações por localidade). -->
 - `/login`
 - `/cadastro`
 - `/logout`
-- `/usuario/<usuario_id>/reclamacoes`
-- `/usuario/<usuario_id>/atualizar/`
+- `/usuario/reclamacoes`
+- `/usuario/atualizar/`
 
 ## Endpoints principais da API
 
+- `GET /api/logout` — encerra a sessão
+- `GET /api/me` — retorna os dados do usuário (se autenticado)
+- `GET /api/usuario/reclamacoes` — retorna todas as reclamações do usuário autenticado (requer login)
 - `GET /api/reclamacoes` — lista todas reclamações
-- `GET /api/reclamacoes/<id>` — detalhe de uma reclamação
-- `GET /api/reclamacoes/status/pendentes` — reclamações pendentes
-- `GET /api/reclamacoes/status/resolvidas` — reclamações resolvidas
-- `GET /api/reclamacoes/status/contestadas` — reclamações contestadas
-- `POST /api/reclamacoes` — criar reclamação (requer login)
-- `POST /api/reclamacoes/<id>/resolver` — marcar como resolvida
-- `POST /api/reclamacoes/<id>/contestar` — marcar como contestada
-- `DELETE /api/reclamacoes/<id>/remover` — remover reclamação
+- `GET /api/reclamacoes/pendentes` — lista as reclamações pendentes
+- `GET /api/reclamacoes/resolvidas` — lista as reclamações resolvidas
+- `GET /api/reclamacoes/contestadas` — lista as reclamações contestadas
+- `GET /api/reclamacoes/<id>` — detalhes de uma reclamação
+- `POST /api/reclamacoes/adicionar` — criar reclamação (requer login)
+- `POST /api/reclamacoes/<id>/resolver` — marcar como resolvida (requer login)
+- `POST /api/reclamacoes/<id>/contestar` — marcar como contestada (requer login)
+- `POST /api/reclamacoes/<id>/remover` — remover reclamação (requer login)
+- `POST /api/cadastro` — cadastra o usuário
+- `POST /api/login` — faz login
 
 ## Execução
 
