@@ -32,6 +32,7 @@ export default function ListaReclamacoes({ lista }: { lista: any[] }) {
               className={clsx("p-2 rounded-xl", {
                 "bg-green-600": reclamacao.status === "Resolvida",
                 "bg-yellow-600": reclamacao.status === "Pendente",
+                "bg-red-600": reclamacao.status === "Contestada",
               })}
             >
               Status: {reclamacao.status}
