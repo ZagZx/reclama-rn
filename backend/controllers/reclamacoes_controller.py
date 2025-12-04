@@ -91,7 +91,7 @@ def add_reclamacao():
     except Exception as e:
         db.session.rollback()
         shutil.rmtree(path)
-        return jsonify({"message": f"Erro ao adicionar as fotos da reclamação: {e}"}), 500
+        return jsonify({"message": f"Erro ao adicionar as fotos da reclamação, a reclamação foi adicionada sem imagens: {e}"}), 500
 
     return jsonify({"message": "Reclamação adicionada com sucesso", "reclamacao": reclamacao.to_dict()}), 201
 
