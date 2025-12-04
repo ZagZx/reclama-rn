@@ -1,23 +1,26 @@
 "use client";
+
 import "../../login/form.css";
+import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 
 export default function Page() {
   const [files, setFiles] = useState<File[]>([]);
+  const pPesquisa = useSearchParams();
+  const id = Number(pPesquisa.get("id"));
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
-
     const formData = new FormData(form);
-
-    const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/reclamacao/adicionar`;
-    const resp = await fetch(url, {
+    const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/reclamacao/${id}/contestar`;
+    const requisicao = await fetch(url, {
       method: "POST",
       credentials: "include" as RequestCredentials,
       body: formData,
     });
-    return resp;
+
+    return await requisicao.json();
   }
 
   function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -26,52 +29,22 @@ export default function Page() {
     const files = Array.from(e.target.files);
     setFiles(files);
   }
-
   return (
-    <main className="flex align-center justify-center h-full">
+    <main className="flex justify-center">
       <form
         onSubmit={handleSubmit}
         className="flex flex-col gap-2 bg-gray-800 rounded-xl p-2 px-10"
       >
-        <label htmlFor="titulo">
-          Titulo<span className="text-red-500">*</span>
+        <label htmlFor="motivo">
+          Motivo<span className="text-red-500">*</span>
         </label>
         <input
           required
-          id="titulo"
-          name="titulo"
+          id="motivo"
+          name="motivo"
           type="text"
-          placeholder="Insira o título"
+          placeholder="Insira o motivo"
         />
-        <label htmlFor="descricao">
-          Descrição<span className="text-red-500">*</span>
-        </label>
-        <input
-          required
-          id="descricao"
-          name="descricao"
-          type="text"
-          placeholder="Insira a descrição"
-        />
-        <label htmlFor="cidade">
-          Cidade<span className="text-red-500">*</span>
-        </label>
-        <input
-          required
-          id="cidade"
-          name="cidade"
-          type="text"
-          placeholder="Insira a cidade"
-        />
-        <label htmlFor="endereco">Endereço</label>
-        <input
-          required
-          id="endereco"
-          name="endereco"
-          type="text"
-          placeholder="Insira a cidade"
-        />
-        <label htmlFor="endereco">Fotos</label>
         <input
           type="file"
           name="fotos"
