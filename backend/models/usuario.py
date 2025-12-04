@@ -29,6 +29,9 @@ class Usuario(db.Model, UserMixin):
         cascade="all, delete-orphan"
     )
     
+    def get_id(self):
+        return int(self.id)
+
     def to_dict(self):
         return {
             'id': self.id,

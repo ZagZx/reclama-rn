@@ -1,7 +1,6 @@
 import shutil
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from werkzeug.utils import secure_filename
 from backend.models import StatusReclamacao, Reclamacao, FotoReclamacao
 from backend.extensions import db
 from backend.utils import (
@@ -23,6 +22,23 @@ def get_reclamacao(reclamacao_id):
     reclamacao: Reclamacao = Reclamacao.query.get_or_404(reclamacao_id)
 
     return jsonify({"reclamacao": reclamacao.to_dict()}), 200
+
+@reclamacoes_bp.route('/reclamacao/<int:reclamacao_id>/resolver', methods=["POST"])
+@login_required
+def resolver_reclamacao(reclamacao_id):
+    reclamacao: Reclamacao = Reclamacao.query.get_or_404(reclamacao_id)
+
+    usuario_id = current_user.get_id()
+    if usuario_id != reclamacao.usuario_id:
+        return jsonify({"message": "Apenas o autor da reclamação pode resolve-la"}), 401
+
+    try:
+        reclamacao.status = StatusReclamacao.RESOLVIDA
+        db.session.commit()
+        return jsonify({"message": "Reclamação resolvida com sucesso"}), 200
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"message": f"Erro ao resolver reclamação: {e}"}), 500
 
 @reclamacoes_bp.route('/reclamacao/adicionar', methods=["POST"])
 @login_required

@@ -20,13 +20,13 @@ export default function Page() {
     return resp;
   }
 
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
     if (!e.target.files) return;
 
     const files = Array.from(e.target.files);
     setFiles(files);
   };
+
   return (
     <main className="flex align-center justify-center h-full">
       <form
