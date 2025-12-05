@@ -2,32 +2,46 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { logout } from "./actions";
+import Swal from "sweetalert2";
+import { getIconByStatus } from "@/utils/alerts";
 
-export default function Logout() {
-  const [message, setMessage] = useState("");
+export default function Page() {
   const router = useRouter();
 
-  useEffect(() => {
-    (async () =>{
-      const response = await logout();
-      if (response.status === 200) {
-        const result = await response.json();
-        setMessage(result.message);
-        router.push("/");
-      }
-      else if (response.status === 401) {
-        setMessage("Login é necessário para realizar esta ação");
-      }
-      else {
-        setMessage("Erro ao finalizar sessão");
-      }
-    })();
-  }, [router]);
+  async function logout() {
+    const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 
-  return(
-    <main>
-      { message && <h1>{ message }</h1>}
-    </main>
-  );
+    const options = {
+        method: "POST",
+        credentials: "include" as RequestCredentials
+    }
+    const response = await fetch(`${apiUrl}/api/logout`, options);
+    const json = await response.json();
+
+    return {
+      ok: response.ok,
+      status: response.status,
+      data: json
+    }
+  }
+
+  useEffect(() => {
+    (async () => {
+      const response = await logout();
+
+      Swal.fire({
+          title: "Encerrar Sessão",
+          text: response.data.message,
+          icon: getIconByStatus(response.status)
+        }
+      ).then(()=> {
+        if (response.status === 401){
+          router.push("/login")
+        }
+        else if (response.status === 200) {
+          router.push("/")
+        }
+      })
+    })();
+  }, []);
 }
