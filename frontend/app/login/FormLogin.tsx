@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
 import { getIconByStatus } from "@/utils/alerts"
-import "./form.css";
+import "@/public/css/form.css";
 import Required from "@/components/ui/Required";
 
 
@@ -73,7 +73,7 @@ export default function LoginForm() {
       <input type="password" id="senha" name="senha" required />
 
       <button
-        className="rounded cursor-pointer"
+        className="rounded"
         type="submit"
         disabled={isSubmitting}
       >

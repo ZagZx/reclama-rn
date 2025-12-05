@@ -1,5 +1,6 @@
 "use client";
 
+import "@/public/css/form.css";
 import cadastroAction from "./actions";
 import Required from "@/components/ui/Required";
 import React, { useState } from "react";
@@ -55,7 +56,7 @@ export default function CadastroForm() {
       <input type="password" id="senha" name="senha" required />
 
       <button
-        className="rounded cursor-pointer"
+        className="rounded"
         type="submit"
         disabled={isSubmitting}
       >

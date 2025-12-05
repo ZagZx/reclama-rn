@@ -1,11 +1,16 @@
 "use client";
-import "../../login/form.css";
+import "@/public/css/form.css";
 import "./box.css";
 import { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import getInfoReclamacao from "../actions";
+import toLocal from "@/utils/localTime";
+import { getIconByStatus } from "@/utils/alerts";
+import Swal from "sweetalert2";
 
 export default function Page() {
+  const router = useRouter();
+
   const pPesquisa = useSearchParams();
   const id = pPesquisa.get("id");
 
@@ -29,12 +34,29 @@ export default function Page() {
     const formData = new FormData(form);
 
     const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/reclamacao/${id}/atualizar`;
-    const resp = await fetch(url, {
+    const response = await fetch(url, {
       method: "POST",
       credentials: "include" as RequestCredentials,
       body: formData,
     });
-    return resp;
+    const json = await response.json();
+
+    if (json.message) {
+      Swal.fire({
+        title:"Atualizar Reclamação",
+        text: json.message,
+        icon: getIconByStatus(response.status)
+      }).then(() => {
+        if (response.status === 200) {
+          router.push(`/reclamacao?id=${id}`)
+        }
+      });
+    }
+    return {
+      ok: response.ok,
+      status: response.status,
+      data: json
+    };
   }
 
   function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -55,9 +77,9 @@ export default function Page() {
             <li>Endreço: {reclamacao.endereco}</li>
             <li>Status: {reclamacao.status}</li>
             <li>Autor: {reclamacao.autor}</li>
-            <li>Data criada: {reclamacao.dataCriacao}</li>
-            <li>Data resolvida: {reclamacao.dataResolucao}</li>
-            <li>Data atualizada: {reclamacao.dataAtualizacao}</li>
+            <li>Data criada: {toLocal(reclamacao.dataCriacao)}</li>
+            <li>Data resolvida: {toLocal(reclamacao.dataResolucao)}</li>
+            <li>Data atualizada: {toLocal(reclamacao.dataAtualizacao)}</li>
           </ul>
         </div>
         <form
@@ -65,30 +87,27 @@ export default function Page() {
           className="flex flex-col gap-2 bg-gray-800 rounded-xl p-2 px-10"
         >
           <label htmlFor="titulo">
-            Titulo<span className="text-red-500">*</span>
+            Titulo
           </label>
           <input
-            required
             id="titulo"
             name="titulo"
             type="text"
             placeholder="Insira o título"
           />
           <label htmlFor="descricao">
-            Descrição<span className="text-red-500">*</span>
+            Descrição
           </label>
           <input
-            required
             id="descricao"
             name="descricao"
             type="text"
             placeholder="Insira a descrição"
           />
           <label htmlFor="cidade">
-            Cidade<span className="text-red-500">*</span>
+            Cidade
           </label>
           <input
-            required
             id="cidade"
             name="cidade"
             type="text"
@@ -96,7 +115,6 @@ export default function Page() {
           />
           <label htmlFor="endereco">Endereço</label>
           <input
-            required
             id="endereco"
             name="endereco"
             type="text"
