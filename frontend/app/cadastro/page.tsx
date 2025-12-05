@@ -1,9 +1,9 @@
-import CadastroForm from "./CadastroForm";
+import CadastroForm from "./FormCadastro";
 
 
 export default async function Cadastro() {
   return (
-    <main className="">
+    <main className="flex justify-center">
       <CadastroForm/>
     </main>
   );
