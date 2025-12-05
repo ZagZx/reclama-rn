@@ -26,9 +26,11 @@ from backend.controllers.auth_controller import auth_bp
 from backend.controllers.reclamacoes_controller import reclamacoes_bp
 from backend.controllers.contestacoes_controller import contestacoes_bp
 from backend.controllers.uploads_controller import uploads_bp
+from backend.controllers.usuario_controller import usuario_bp
 api_bp.register_blueprint(auth_bp)
 api_bp.register_blueprint(reclamacoes_bp)
 api_bp.register_blueprint(contestacoes_bp)
 api_bp.register_blueprint(uploads_bp)
+api_bp.register_blueprint(usuario_bp)
 
 app.register_blueprint(api_bp)
