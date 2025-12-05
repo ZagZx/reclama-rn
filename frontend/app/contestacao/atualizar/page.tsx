@@ -1,10 +1,14 @@
 "use client";
 
-import "../../login/form.css";
-import { useSearchParams } from "next/navigation";
+import { getIconByStatus } from "@/utils/alerts";
+import "@/public/css/form.css";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 export default function Page() {
+  const router = useRouter();
+
   const [files, setFiles] = useState<File[]>([]);
   const pPesquisa = useSearchParams();
   const id = Number(pPesquisa.get("id"));
@@ -14,13 +18,30 @@ export default function Page() {
     const form = e.currentTarget;
     const formData = new FormData(form);
     const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/contestacao/${id}/atualizar`;
-    const requisicao = await fetch(url, {
+    const response = await fetch(url, {
       method: "POST",
       credentials: "include" as RequestCredentials,
       body: formData,
     });
 
-    return await requisicao.json();
+    const json = await response.json();
+  
+    if (json.message) {
+      Swal.fire({
+        title:"Atualizar Contestação",
+        text: json.message,
+        icon: getIconByStatus(response.status)
+      }).then(() => {
+        if (response.status === 200) {
+          router.push(`/reclamacao?id=${id}`)
+        }
+      });
+    }
+    return {
+      ok: response.ok,
+      status: response.status,
+      data: json
+    };
   }
 
   function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -29,6 +50,7 @@ export default function Page() {
     const files = Array.from(e.target.files);
     setFiles(files);
   }
+  
   return (
     <main className="flex justify-center">
       <form
@@ -36,10 +58,9 @@ export default function Page() {
         className="flex flex-col gap-2 bg-gray-800 rounded-xl p-2 px-10"
       >
         <label htmlFor="motivo">
-          Motivo<span className="text-red-500">*</span>
+          Motivo
         </label>
         <input
-          required
           id="motivo"
           name="motivo"
           type="text"

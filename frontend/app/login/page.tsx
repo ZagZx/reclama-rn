@@ -1,8 +1,8 @@
-import LoginForm from "./LoginForm";
+import LoginForm from "./FormLogin";
 
-export default async function Login() {
+export default function Page() {
   return (
-    <main className="">
+    <main className="flex justify-center">
       <LoginForm />
     </main>
   );

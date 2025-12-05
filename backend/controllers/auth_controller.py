@@ -44,6 +44,9 @@ def login():
         return jsonify({"message": "Preencha todos os campos do formulário"}), 400
 
     usuario: Usuario = Usuario.query.filter_by(email=email).first()
+    if current_user.is_authenticated:
+        return jsonify({"message": "Você já está autenticado"}), 401
+
     if not usuario or not check_password_hash(usuario.senha_hash, senha):
         return jsonify({"message": "Email ou senha incorreta"}), 401
 

@@ -1,9 +1,15 @@
 "use client";
-import "../../login/form.css";
+
+import Required from "@/components/ui/Required";
+import "@/public/css/form.css";
+import { getIconByStatus } from "@/utils/alerts";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 export default function Page() {
   const [files, setFiles] = useState<File[]>([]);
+  const router = useRouter();
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -12,12 +18,30 @@ export default function Page() {
     const formData = new FormData(form);
 
     const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/reclamacao/adicionar`;
-    const resp = await fetch(url, {
+    const response = await fetch(url, {
       method: "POST",
       credentials: "include" as RequestCredentials,
       body: formData,
     });
-    return resp;
+
+    const json = await response.json();
+
+    if (json.message) {
+      Swal.fire({
+        title:"Reclamação",
+        text: json.message,
+        icon: getIconByStatus(response.status)
+      }).then(() => {
+        if (response.status === 201) {
+          router.push(`/reclamacao?id=${json.reclamacao.id}`)
+        }
+      });
+    }
+    return {
+      ok: response.ok,
+      status: response.status,
+      data: json
+    };
   }
 
   function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -34,7 +58,7 @@ export default function Page() {
         className="flex flex-col gap-2 bg-gray-800 rounded-xl p-2 px-10"
       >
         <label htmlFor="titulo">
-          Titulo<span className="text-red-500">*</span>
+          Titulo<Required/>
         </label>
         <input
           required
@@ -44,7 +68,7 @@ export default function Page() {
           placeholder="Insira o título"
         />
         <label htmlFor="descricao">
-          Descrição<span className="text-red-500">*</span>
+          Descrição<Required/>
         </label>
         <input
           required
@@ -54,7 +78,7 @@ export default function Page() {
           placeholder="Insira a descrição"
         />
         <label htmlFor="cidade">
-          Cidade<span className="text-red-500">*</span>
+          Cidade<Required/>
         </label>
         <input
           required
@@ -65,7 +89,6 @@ export default function Page() {
         />
         <label htmlFor="endereco">Endereço</label>
         <input
-          required
           id="endereco"
           name="endereco"
           type="text"
