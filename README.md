@@ -4,6 +4,12 @@
 - [Abraão](https://github.com/Abraao3)  
 - [João Paulo](https://github.com/Paulinzz)  
 
+## Reflexão
+
+Reflexão sobre o problema, objetivos do sistema e conhecimentos adquiridos com o projeto.
+
+[Clique aqui para ver](./reflexao.pdf)
+
 <!-- ## Problema escolhido 
 Invisibilidade dos problemas corriqueiros do cidadão, por exemplo: Ruas esburacadas, falta decalçamento, cano estourado, etc.
 
