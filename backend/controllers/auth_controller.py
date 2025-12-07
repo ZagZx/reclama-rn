@@ -60,7 +60,7 @@ def login():
         return jsonify({"message": "Email ou senha incorreta"}), 401
 
     if login_user(usuario):
-        return jsonify({"message": "Login realizado"}), 200
+        return jsonify({"message": "Login realizado", "usuario": usuario.to_dict()}), 200
     else:
         return jsonify({"message": "Erro ao fazer login"}), 500
 
