@@ -1,15 +1,21 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import toLocal from "@/lib/utils/localTime";
+import toLocal from "@/utils/localTime";
+import { useSearchParams, useRouter } from "next/navigation";
+import clsx from "clsx";
 
 export default function Page() {
   const [dados, setDados] = useState<[] | null>(null);
+  const [idUsuario, setIdUsuario] = useState<number | null>(null);
   const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
+  const pPesquisa = useSearchParams();
+  const reclamacaoId = pPesquisa.get("id");
+  const router = useRouter();
 
   async function getDados() {
     const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
-    const url = `${apiUrl}/api/usuario/contestacoes`;
+    const url = `${apiUrl}/api/reclamacao/${reclamacaoId}/contestacoes`;
     const request = await fetch(url, {
       method: "GET",
       credentials: "include" as RequestCredentials,
@@ -17,12 +23,24 @@ export default function Page() {
     return await request.json();
   }
 
+  async function getEu() {
+    const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+    const url = `${apiUrl}/api/me`;
+    const request = await fetch(url, {
+      method: "GET",
+      credentials: "include" as RequestCredentials,
+    });
+    const data = await request.json();
+    return await data;
+  }
+
   useEffect(() => {
     if (dados === null) {
       (async () => {
         const dados = await getDados();
-
-        setDados(dados.contestacoes);
+        const usuario = await getEu();
+        setDados(await dados.contestacoes);
+        setIdUsuario(await usuario.id);
       })();
     }
   });
@@ -46,6 +64,18 @@ export default function Page() {
                 />
               ))}
             </div>
+            <button
+              className={clsx("bg-gray-700 rounded p-3 cursor-pointer", {
+                invisible: Number(dados.usuarioId) !== Number(idUsuario),
+                visible: Number(dados.usuarioId) === Number(idUsuario),
+              })}
+              type="button"
+              onClick={() => {
+                router.push(`/contestacao/atualizar?id=${dados.id}`);
+              }}
+            >
+              Atualizar contestação
+            </button>
           </div>
         ))}
       </div>
