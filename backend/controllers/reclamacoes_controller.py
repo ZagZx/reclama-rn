@@ -140,6 +140,9 @@ def add_reclamacao():
 
     imagens = arquivos.getlist("fotos")
 
+    if len(imagens) > 5:
+        return jsonify({"message": "Limite de 5 imagens excedido"}), 400
+
     if imagens and imagens[0].filename:
         path = criar_e_obter_diretorio_reclamacao(reclamacao.id)
 
