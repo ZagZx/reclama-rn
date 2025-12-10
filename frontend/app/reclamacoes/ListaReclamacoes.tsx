@@ -3,25 +3,23 @@
 import { useRouter } from "next/navigation";
 import clsx from "clsx";
 import { useAuth } from "@/context/AuthContext";
+import { Reclamacao } from "@/types";
 
-export default function ListaReclamacoes({ lista }: { lista: any[] }) {
+export default function ListaReclamacoes({ reclamacoes }: { reclamacoes: Reclamacao[] }) {
   const router = useRouter();
   const { usuario } = useAuth();
   
   async function handleResolver(reclamacaoId: number) {
-    const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/reclamacao/${reclamacaoId}/resolver`;
-
-    const response = await fetch(url, {
+    const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+    await fetch(`${apiUrl}/api/reclamacao/${reclamacaoId}/resolver`, {
       method: "POST",
       credentials: "include" as RequestCredentials,
     });
-
-    return response;
   }
 
   return (
-    <main className="flex justify-center items-center flx-row gap-3">
-      {lista.map((reclamacao) => (
+    <div className="flex justify-center items-center flx-row gap-3">
+      {reclamacoes.map((reclamacao) => (
         <div
           key={reclamacao.id}
           className="p-5 bg-gray-800 rounded-xl flex flex-col gap-2"
@@ -44,7 +42,7 @@ export default function ListaReclamacoes({ lista }: { lista: any[] }) {
           <button
             className="bg-gray-700 rounded p-3 cursor-pointer"
             onClick={() => {
-              router.push(`/reclamacao?id=${reclamacao.id}`);
+              router.push(`/reclamacao/${reclamacao.id}`);
             }}
           >
             Acessar reclamação
@@ -92,13 +90,13 @@ export default function ListaReclamacoes({ lista }: { lista: any[] }) {
             })}
             type="button"
             onClick={() => {
-              router.push(`/reclamacao/atualizar?id=${reclamacao.id}`);
+              router.push(`/reclamacao/${reclamacao.id}/atualizar`);
             }}
           >
             Editar reclamação
           </button>
         </div>
       ))}
-    </main>
+    </div>
   );
 }

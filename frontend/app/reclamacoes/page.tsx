@@ -15,7 +15,7 @@ export default async function Page() {
           <Button content="Adicionar reclamação" />
         </Link>
       </div>
-      <ListaReclamacoes lista={data.reclamacoes} />
+      <ListaReclamacoes reclamacoes={data.reclamacoes} />
     </>
   );
 }
