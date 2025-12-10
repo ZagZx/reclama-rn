@@ -11,7 +11,6 @@ from backend.extensions import db
 from backend.utils import (
     criar_e_obter_diretorio_contestacao,
     salvar_imagem,
-    CONTESTACOES_PATH
 )
 
 contestacoes_bp = Blueprint('contestacoes', __name__)
@@ -34,13 +33,16 @@ def get_contestacao(contestacao_id):
 @login_required
 def atualizar_contestacao(contestacao_id):
     contestacao: Contestacao = Contestacao.query.get_or_404(contestacao_id)
-
-    dados = request.form
-
     if current_user.get_id() != contestacao.usuario_id:
         return jsonify({"message": "Apenas o autor da contestação pode atualiza-la"}), 401
-    
 
+    dados = request.form
+    arquivos = request.files
+
+    imagens = arquivos.getlist("fotos")
+    if len(contestacao.provas) + len(imagens) > 5:
+        return jsonify({"message": "Limite de 5 imagens excedido"}), 400
+    
     motivo = dados.get("motivo")
     
     try:
@@ -51,12 +53,7 @@ def atualizar_contestacao(contestacao_id):
         db.session.rollback()
         return jsonify({"message": f"Erro ao atualizar dados da contestação: {e}"}), 500
 
-    arquivos = request.files
-    imagens = arquivos.getlist("fotos")
     if imagens and imagens[0].filename:
-        if len(contestacao.provas) + len(imagens) > 5:
-            return jsonify({"message": "O limite de 5 imagens foi atingido"}), 400
-
         path = criar_e_obter_diretorio_contestacao(contestacao.id)
         try:
             for img in imagens:
@@ -86,6 +83,10 @@ def contestar_reclamacao(reclamacao_id):
     dados = request.form
     arquivos = request.files
 
+    imagens = arquivos.getlist("fotos")
+    if len(imagens) > 5:
+        return jsonify({"message": "Limite de 5 imagens excedido"}), 400
+    
     motivo = dados.get('motivo')
     if not motivo:
         return jsonify({"message": "Motivo é obrigatório"}), 400
@@ -101,17 +102,9 @@ def contestar_reclamacao(reclamacao_id):
     try:
         db.session.add(contestacao)
         db.session.commit()
-        # return jsonify({
-        #     'message': 'Contestação registrada',
-        #     'contestacao': contestacao.to_dict()
-        # }), 201
     except Exception as e:
         db.session.rollback()
         return jsonify({'message': f'Erro ao registrar contestação: {str(e)}'}), 500
-    
-
-    arquivos = request.files
-    imagens = arquivos.getlist("fotos")
 
     if imagens and imagens[0]:
         path = criar_e_obter_diretorio_contestacao(contestacao.id)
