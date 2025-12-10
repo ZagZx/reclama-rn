@@ -67,7 +67,7 @@ export default function ListaReclamacoes({ reclamacoes }: { reclamacoes: Reclama
             })}
             type="button"
             onClick={() => {
-              router.push(`/contestacao/adicionar?id=${reclamacao.id}`);
+              router.push(`/reclamacao/${reclamacao.id}/contestar`);
             }}
           >
             Contestar reclamação

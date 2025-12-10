@@ -1,10 +1,10 @@
+
 import "@/public/css/form.css";
-import "./box.css";
-import { notFound } from "next/navigation";
+import { FormAddContestacao } from "./FormAddContestacao";
 import getReclamacao from "../actions";
-import { FormAtualizarReclamacao } from "./FormAtualizarReclamacao";
-import DadosAtuaisReclamacao from "./DadosAtuaisReclamacao";
+import { notFound } from "next/navigation";
 import { PageReclamacaoProps } from "../props";
+
 
 export default async function Page({ params }: PageReclamacaoProps) {
   const { id } = await params;
@@ -17,12 +17,9 @@ export default async function Page({ params }: PageReclamacaoProps) {
   if (response.status === 404) {
     notFound();
   }
-  const reclamacao = response.data.reclamacao;
-
-  return(
-    <div className="flex align-center justify-center h-full gap-[20px]">
-      <DadosAtuaisReclamacao reclamacao={reclamacao}/>
-      <FormAtualizarReclamacao reclamacaoId={reclamacaoId}/>
+  return (
+    <div className="flex justify-center">
+      <FormAddContestacao reclamacaoId={reclamacaoId}/>
     </div>
   );
 }

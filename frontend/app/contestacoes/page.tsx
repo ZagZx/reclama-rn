@@ -57,7 +57,7 @@ export default function Page() {
               })}
               type="button"
               onClick={() => {
-                router.push(`/contestacao/atualizar?id=${dados.id}`);
+                router.push(`/contestacao/${dados.id}/atualizar`);
               }}
             >
               Atualizar contestação

@@ -24,7 +24,8 @@ export async function proxy(request: NextRequest) {
 export const config = {
   matcher: [
     "/reclamacao/adicionar",
-    "/reclamacao/atualizar",
+    "/reclamacao/:id/atualizar",
+    "/reclamacao/:id/contestar",
     "/usuario/:path*",
     "/logout",
   ]
