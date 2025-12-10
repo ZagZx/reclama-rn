@@ -4,13 +4,12 @@ import Required from "@/components/ui/Required";
 import "@/public/css/form.css";
 import { getIconByStatus } from "@/lib/utils/alerts";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
 import Swal from "sweetalert2";
+import { InputFotos } from "@/components/ui/InputFotos";
 
 export default function Page() {
   const router = useRouter();
 
-  const [files, setFiles] = useState<File[]>([]);
   const pPesquisa = useSearchParams();
   const id = Number(pPesquisa.get("id")); // id da reclamação
 
@@ -29,12 +28,12 @@ export default function Page() {
   
     if (json.message) {
       Swal.fire({
-        title:"Contestação",
+        title:"Contestar Reclamação",
         text: json.message,
         icon: getIconByStatus(response.status)
       }).then(() => {
         if (response.status === 201) {
-          router.push(`/reclamacao?id=${id}`)
+          router.push(`/reclamacao/${id}`)
         }
       });
     }
@@ -46,12 +45,6 @@ export default function Page() {
 
   }
 
-  function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
-    if (!e.target.files) return;
-
-    const files = Array.from(e.target.files);
-    setFiles(files);
-  }
   return (
     <main className="flex justify-center">
       <form
@@ -68,18 +61,7 @@ export default function Page() {
           type="text"
           placeholder="Insira o motivo"
         />
-        <input
-          type="file"
-          name="fotos"
-          multiple
-          onChange={handleFileChange}
-          accept="image/*"
-        />
-        <ul>
-          {files.map((file, index) => (
-            <li key={index}>{file.name}</li>
-          ))}
-        </ul>
+        <InputFotos />
         <button type="submit" className="rounded">
           Adicionar
         </button>
