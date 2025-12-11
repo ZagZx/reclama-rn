@@ -1,12 +1,12 @@
-import ListaReclamacoes from "../ListaReclamacoes";
+import ListaReclamacoes from "@/components/ui/ListaReclamacoes";
 
 export default async function Page() {
   const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/reclamacoes/contestadas`;
 
-  const resp = await fetch(url, { method: "GET" });
-  const data = await resp.json();
+  const response = await fetch(url, { method: "GET" });
+  const data = await response.json();
 
   return (
-    <ListaReclamacoes lista={data.reclamacoes}/>
+    <ListaReclamacoes reclamacoes={data.reclamacoes}/>
   );
 }

@@ -1,4 +1,4 @@
-import ListaReclamacoes from "./ListaReclamacoes";
+import ListaReclamacoes from "@/components/ui/ListaReclamacoes";
 import Link from "next/link";
 import Button from "@/components/ui/Button";
 
