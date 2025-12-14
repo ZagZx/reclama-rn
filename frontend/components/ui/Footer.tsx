@@ -14,12 +14,12 @@ export default function Footer() {
           <p>Melhorando o Rio Grande do Norte, uma reclamação de cada vez.</p>
         </div>
         <div className="flex flex-col">
-          <h1 className="font-bold text-xl">Links Úteis</h1>
+          <h1 className="font-bold text-xl text-white">Links Úteis</h1>
           <Link href="/">Início</Link>
           <Link href="/reclamacoes">Reclamações</Link>
         </div>
         <div>
-          <h1 className="font-bold text-xl">Contato</h1>
+          <h1 className="font-bold text-xl text-white">Contato</h1>
           <Link href="https://github.com/ZagZx/reclama-rn" target="_blank">Github</Link>
         </div>
       </div>
