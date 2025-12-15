@@ -5,10 +5,14 @@ export default function Page() {
   return (
     <div className="flex flex-row gap-[20px] justify-center items-center">
       <Link href="/usuario/contestacoes">
-        <Button content="Minhas contestações" />
+        <Button>
+          Minhas contestações  
+        </Button>
       </Link>
       <Link href="/usuario/reclamacoes">
-        <Button content="Minhas reclamações" />
+        <Button>
+          Minhas reclamações
+        </Button>
       </Link>
     </div>
   );
