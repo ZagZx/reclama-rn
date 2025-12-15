@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Reclame RN",
+  title: "ReclamaRN",
   description: "Reclame sobre os problemas de municípios do Rio Grande do Norte",
 };
 
