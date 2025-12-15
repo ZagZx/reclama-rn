@@ -4,11 +4,9 @@ import AdicionarReclamacaoSection from "@/components/ui/AdicionarReclamacaoSecti
 export default async function Page() {
   const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 
-  const response = await fetch(`${apiUrl}/api/reclamacoes`, 
-    { 
-      method: "GET" 
-    }
-  );
+  const response = await fetch(`${apiUrl}/api/reclamacoes`, {
+    method: "GET",
+  });
   const data = await response.json();
 
   return (
