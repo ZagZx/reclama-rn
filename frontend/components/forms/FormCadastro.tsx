@@ -1,7 +1,7 @@
 "use client";
 
 import "@/public/css/form.css";
-import cadastroAction from "./actions";
+import cadastroAction from "../../app/(autenticacao)/cadastro/actions";
 import Required from "@/components/ui/Required";
 import React, { useState } from "react";
 import Swal from "sweetalert2";

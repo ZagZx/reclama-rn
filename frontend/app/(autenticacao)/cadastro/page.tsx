@@ -1,4 +1,4 @@
-import CadastroForm from "./FormCadastro";
+import CadastroForm from "../../../components/forms/FormCadastro";
 
 
 export default async function Cadastro() {
