@@ -1,6 +1,5 @@
 import ListaReclamacoes from "@/components/ui/ListaReclamacoes";
-import Link from "next/link";
-import Button from "@/components/ui/Button";
+import AdicionarReclamacaoSection from "@/components/ui/AdicionarReclamacaoSection";
 
 export default async function Page() {
   const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
@@ -14,11 +13,7 @@ export default async function Page() {
 
   return (
     <>
-      <div className="flex items-center justify-center">
-        <Link href="/reclamacao/adicionar">
-          <Button content="Adicionar reclamação" />
-        </Link>
-      </div>
+      <AdicionarReclamacaoSection />
       <ListaReclamacoes reclamacoes={data.reclamacoes} />
     </>
   );

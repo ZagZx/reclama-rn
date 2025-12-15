@@ -1,3 +1,4 @@
+import AdicionarReclamacaoSection from "@/components/ui/AdicionarReclamacaoSection";
 import ListaReclamacoes from "@/components/ui/ListaReclamacoes";
 
 export default async function Page() {
@@ -7,6 +8,10 @@ export default async function Page() {
   const data = await response.json();
 
   return (
-    <ListaReclamacoes reclamacoes={data.reclamacoes}/>
+    <>
+      <AdicionarReclamacaoSection />
+      <ListaReclamacoes reclamacoes={data.reclamacoes}/>
+    </>
+
   );
 }
