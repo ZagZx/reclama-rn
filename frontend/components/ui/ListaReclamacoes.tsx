@@ -5,10 +5,14 @@ import clsx from "clsx";
 import { useAuth } from "@/context/AuthContext";
 import { Reclamacao } from "@/types";
 
-export default function ListaReclamacoes({ reclamacoes }: { reclamacoes: Reclamacao[] }) {
+export default function ListaReclamacoes({
+  reclamacoes,
+}: {
+  reclamacoes: Reclamacao[];
+}) {
   const router = useRouter();
   const { usuario } = useAuth();
-  
+
   async function handleResolver(reclamacaoId: number) {
     const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
     await fetch(`${apiUrl}/api/reclamacao/${reclamacaoId}/resolver`, {
@@ -18,15 +22,15 @@ export default function ListaReclamacoes({ reclamacoes }: { reclamacoes: Reclama
   }
 
   return (
-    <div className="flex justify-center items-center flx-row gap-3">
+    <div className="flex justify-center items-center flx-row gap-3 mx-[20px]">
       {reclamacoes.map((reclamacao) => (
         <div
           key={reclamacao.id}
-          className="p-5 bg-gray-800 rounded-xl flex flex-col gap-2"
+          className="p-5 bg-white border-2 border-grey-100 rounded-xl flex flex-col gap-2"
         >
-          <ul className="flex flex-col gap-5">
+          <ul className="flex flex-col">
+            <li className="text-xl font-bold">{reclamacao.titulo}</li>
             <li>Autor: {reclamacao.autor}</li>
-            <li>Titulo: {reclamacao.titulo}</li>
             <li>Descrição: {reclamacao.descricao}</li>
             <li>Cidade: {reclamacao.cidade}</li>
             <li
