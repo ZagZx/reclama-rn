@@ -14,7 +14,7 @@ export function InputFotos() {
   return(
     <>
       <input
-        className="bg-neutral-100 border-1 border-neutral-200 rounded"
+        className="bg-neutral-100 border-1 border-neutral-200 rounded max-w-[270px]"
         type="file"
         name="fotos"
         id="fotos"
