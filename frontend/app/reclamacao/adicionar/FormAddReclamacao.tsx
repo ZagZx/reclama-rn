@@ -1,7 +1,10 @@
 "use client";
 
-import { InputFotos } from "@/components/ui/InputFotos";
-import Required from "@/components/ui/Required";
+import Button from "@/components/ui/Button";
+import Input from "@/components/ui/Inputs/Input";
+import { InputFotos } from "@/components/ui/Inputs/InputFotos";
+import TextArea from "@/components/ui/Inputs/TextArea";
+import Required from "@/components/ui/Inputs/Required";
 import { getIconByStatus } from "@/lib/utils/alerts";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
@@ -38,50 +41,62 @@ export function FormAddReclamacao() {
   return(
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col gap-2 bg-gray-800 rounded-xl p-2 px-10"
+      method="post"
     >
-      <label htmlFor="titulo">
-        Titulo<Required/>
-      </label>
-      <input
-        required
-        id="titulo"
-        name="titulo"
-        type="text"
-        placeholder="Insira o título"
-      />
-      <label htmlFor="descricao">
-        Descrição<Required/>
-      </label>
-      <input
-        required
-        id="descricao"
-        name="descricao"
-        type="text"
-        placeholder="Insira a descrição"
-      />
-      <label htmlFor="cidade">
-        Cidade<Required/>
-      </label>
-      <input
-        required
-        id="cidade"
-        name="cidade"
-        type="text"
-        placeholder="Insira a cidade"
-      />
-      <label htmlFor="endereco">Endereço</label>
-      <input
-        id="endereco"
-        name="endereco"
-        type="text"
-        placeholder="Insira a cidade"
-      />
-      <label htmlFor="fotos">Fotos (máximo 5)</label>
-      <InputFotos />
-      <button type="submit" className="rounded">
-        Adicionar
-      </button>
+      <div className="
+        flex flex-col gap-2 
+        bg-white 
+        border-2 border-neutral-200 
+        rounded-xl 
+        p-2 px-10"
+      >
+        <label htmlFor="titulo">
+          Titulo <Required/>
+        </label>
+        <Input
+          required
+          id="titulo"
+          name="titulo"
+          type="text"
+          placeholder="Insira o título"
+        />
+
+        <label htmlFor="descricao">
+          Descrição <Required/>
+        </label>
+        <TextArea
+          required
+          id="descricao"
+          name="descricao"
+          placeholder="Insira a descrição"
+        />
+
+        <label htmlFor="cidade">
+          Cidade <Required/>
+        </label>
+        <Input
+          required
+          id="cidade"
+          name="cidade"
+          type="text"
+          placeholder="Insira a cidade"
+        />
+
+        <label htmlFor="endereco">Endereço</label>
+        <Input
+          id="endereco"
+          name="endereco"
+          type="text"
+          placeholder="Insira o endereço"
+        />
+
+        <label htmlFor="fotos">Fotos (máximo 5)</label>
+        <InputFotos />
+
+        <Button>
+          Adicionar
+        </Button>
+      </div>
     </form>
   );
 }

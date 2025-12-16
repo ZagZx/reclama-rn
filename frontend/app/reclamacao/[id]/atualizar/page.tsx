@@ -1,5 +1,4 @@
 import "@/public/css/form.css";
-import "./box.css";
 import { notFound } from "next/navigation";
 import getReclamacao from "../actions";
 import { FormAtualizarReclamacao } from "./FormAtualizarReclamacao";

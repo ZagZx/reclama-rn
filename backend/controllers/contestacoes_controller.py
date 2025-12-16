@@ -34,7 +34,7 @@ def get_contestacao(contestacao_id):
 def atualizar_contestacao(contestacao_id):
     contestacao: Contestacao = Contestacao.query.get_or_404(contestacao_id)
     if current_user.get_id() != contestacao.usuario_id:
-        return jsonify({"message": "Apenas o autor da contestação pode atualiza-la"}), 401
+        return jsonify({"message": "Apenas o autor da contestação pode atualiza-la"}), 403
 
     dados = request.form
     arquivos = request.files

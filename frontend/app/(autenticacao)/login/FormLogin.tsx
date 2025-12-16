@@ -5,11 +5,13 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Swal from "sweetalert2";
 import { getIconByStatus } from "@/lib/utils/alerts"
 import "@/public/css/form.css";
-import Required from "@/components/ui/Required";
+import Required from "@/components/ui/Inputs/Required";
 import { useAuth } from "@/context/AuthContext";
+import Input from "@/components/ui/Inputs/Input";
+import Button from "@/components/ui/Button";
 
 
-export default function LoginForm() {
+export default function FormLogin() {
   const params = useSearchParams();
   const redirect = params.get("redirect");
   const [showModal, setShowModal] = useState(true);
@@ -88,24 +90,22 @@ export default function LoginForm() {
   return (
     <form
       onSubmit={onSubmit}
-      className="flex flex-col gap-2 bg-gray-800 rounded-xl p-2 px-5"
+      className=""
       method="post"
-    >
-      <label htmlFor="email">Email <Required/></label>
-      <input type="text" id="email" name="email" required />
+    > 
+      <div className="flex flex-col gap-2 border-2 border-neutral-200 rounded-xl p-5">
+        <label htmlFor="email">Email <Required/></label>
+        <Input id="email" name="email" required/>
 
-      <label htmlFor="senha">Senha <Required/></label>
-      <input type="password" id="senha" name="senha" required />
+        <label htmlFor="senha">Senha <Required/></label>
+        <Input type="password" id="senha" name="senha" required/>
 
-      <button
-        className="rounded"
-        type="submit"
-        disabled={isSubmitting}
-      >
-        {
-          isSubmitting ? "Entrando..." : "Iniciar sessão"
-        }
-      </button>
+        <Button disabled={isSubmitting}>
+          {
+            isSubmitting ? "Entrando..." : "Iniciar sessão"
+          }
+        </Button>
+      </div>
     </form>
   );
 }

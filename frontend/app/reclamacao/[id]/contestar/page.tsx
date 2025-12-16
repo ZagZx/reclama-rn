@@ -5,7 +5,6 @@ import getReclamacao from "../actions";
 import { notFound } from "next/navigation";
 import { PageReclamacaoProps } from "../props";
 
-
 export default async function Page({ params }: PageReclamacaoProps) {
   const { id } = await params;
 
@@ -18,7 +17,7 @@ export default async function Page({ params }: PageReclamacaoProps) {
     notFound();
   }
   return (
-    <div className="flex justify-center">
+    <div className="flex flex-1 items-center justify-center">
       <FormAddContestacao reclamacaoId={reclamacaoId}/>
     </div>
   );

@@ -29,7 +29,7 @@ def resolver_reclamacao(reclamacao_id):
 
     usuario_id = current_user.get_id()
     if usuario_id != reclamacao.usuario_id:
-        return jsonify({"message": "Apenas o autor da reclamação pode resolve-la"}), 401
+        return jsonify({"message": "Apenas o autor da reclamação pode resolve-la"}), 403
     if reclamacao.status == StatusReclamacao.RESOLVIDA:
         return jsonify({"message": "Esta reclamação já está resolvida"}), 400
     if reclamacao.status == StatusReclamacao.CONTESTADA:
@@ -51,7 +51,7 @@ def atualizar_reclamacao(reclamacao_id):
 
     usuario_id = current_user.get_id()
     if usuario_id != reclamacao.usuario_id:
-        return jsonify({"message": "Apenas o autor da reclamação pode atualizá-la"}), 401
+        return jsonify({"message": "Apenas o autor da reclamação pode atualizá-la"}), 403
 
     dados = request.form
     arquivos = request.files

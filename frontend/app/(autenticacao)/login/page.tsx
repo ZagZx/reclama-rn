@@ -1,9 +1,9 @@
-import LoginForm from "./FormLogin";
+import FormLogin from "./FormLogin";
 
 export default function Page() {
   return (
-    <main className="flex justify-center">
-      <LoginForm />
-    </main>
+    <div className="flex justify-center items-center flex-1">
+      <FormLogin />
+    </div>
   );
 }

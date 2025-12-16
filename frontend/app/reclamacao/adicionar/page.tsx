@@ -3,7 +3,7 @@ import { FormAddReclamacao } from "./FormAddReclamacao";
 
 export default function Page() {
   return (
-    <div className="flex align-center justify-center h-full">
+    <div className="flex flex-1 items-center justify-center ">
       <FormAddReclamacao />
     </div>
   );

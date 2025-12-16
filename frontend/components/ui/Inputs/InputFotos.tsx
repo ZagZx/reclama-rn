@@ -14,6 +14,7 @@ export function InputFotos() {
   return(
     <>
       <input
+        className="bg-neutral-100 border-1 border-neutral-200 rounded max-w-[270px]"
         type="file"
         name="fotos"
         id="fotos"
@@ -23,7 +24,13 @@ export function InputFotos() {
       />
       <ul>
         {files.map((file, index) => (
-          <li key={index}>{file.name}</li>
+          <li 
+            className="max-w-[270px] truncate"
+            title={file.name}
+            key={index}
+          >
+            {file.name}
+          </li>
         ))}
       </ul>
     </>
