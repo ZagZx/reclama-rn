@@ -1,0 +1,303 @@
+<svg viewBox="0 0 1440 1800" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fundo -->
+  <rect width="1440" height="1800" fill="#f9fafb"/>
+  
+  <!-- Cabeçalho -->
+  <rect width="1440" height="80" fill="#22c55e"/>
+  
+  <!-- Logo -->
+  <circle cx="80" cy="40" r="25" fill="#ffffff"/>
+  <path d="M 75 30 L 80 40 L 85 30" stroke="#22c55e" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <text x="120" y="50" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#ffffff">ReclamaRN</text>
+  
+  <!-- Menu -->
+  <text x="1100" y="50" font-family="Arial, sans-serif" font-size="16" fill="#ffffff">Início</text>
+  <text x="1180" y="50" font-family="Arial, sans-serif" font-size="16" fill="#ffffff">Reclamações</text>
+  <text x="1310" y="50" font-family="Arial, sans-serif" font-size="16" fill="#ffffff">Usuario</text>
+  <text x="1400" y="50" font-family="Arial, sans-serif" font-size="16" fill="#ffffff">Sair</text>
+  
+  <!-- Breadcrumb -->
+  <text x="120" y="140" font-family="Arial, sans-serif" font-size="14" fill="#9ca3af">
+    Início > Reclamações > Atualizar Reclamação
+  </text>
+  
+  <!-- Título da Página -->
+  <text x="120" y="200" font-family="Arial, sans-serif" font-size="36" font-weight="bold" fill="#166534">
+    Atualizar Reclamação
+  </text>
+  
+  <!-- Container Principal -->
+  <g id="main-content">
+    
+    <!-- Card Esquerdo - Dados Atuais -->
+    <rect x="120" y="240" width="600" height="1100" rx="15" fill="#ffffff" stroke="#e5e7eb" stroke-width="2"/>
+    
+    <!-- Cabeçalho do Card -->
+    <rect x="120" y="240" width="600" height="60" rx="15" fill="#f0fdf4"/>
+    <text x="150" y="275" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#166534">
+      📋 Dados Atuais da Reclamação
+    </text>
+    
+    <!-- Status Badge -->
+    <rect x="580" y="255" width="120" height="30" rx="15" fill="#fbbf24"/>
+    <text x="640" y="275" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">
+      Contestada
+    </text>
+    
+    <!-- Conteúdo do Card Esquerdo -->
+    <g id="current-data">
+      <!-- Título -->
+      <text x="150" y="340" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#6b7280">
+        Título
+      </text>
+      <text x="150" y="370" font-family="Arial, sans-serif" font-size="16" fill="#111827">
+        Poste queimado na Av. Principal
+      </text>
+      
+      <line x1="150" y1="390" x2="670" y2="390" stroke="#e5e7eb" stroke-width="1"/>
+      
+      <!-- Descrição -->
+      <text x="150" y="425" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#6b7280">
+        Descrição
+      </text>
+      <text x="150" y="455" font-family="Arial, sans-serif" font-size="15" fill="#111827">
+        O poste de iluminação pública está sem
+      </text>
+      <text x="150" y="478" font-family="Arial, sans-serif" font-size="15" fill="#111827">
+        funcionar há mais de 2 semanas, causando
+      </text>
+      <text x="150" y="501" font-family="Arial, sans-serif" font-size="15" fill="#111827">
+        grande insegurança para os moradores.
+      </text>
+      
+      <line x1="150" y1="525" x2="670" y2="525" stroke="#e5e7eb" stroke-width="1"/>
+      
+      <!-- Localização -->
+      <text x="150" y="560" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#6b7280">
+        📍 Localização
+      </text>
+      
+      <text x="150" y="590" font-family="Arial, sans-serif" font-size="14" fill="#6b7280">
+        Cidade:
+      </text>
+      <text x="250" y="590" font-family="Arial, sans-serif" font-size="15" fill="#111827">
+        Natal
+      </text>
+      
+      <text x="150" y="620" font-family="Arial, sans-serif" font-size="14" fill="#6b7280">
+        Endereço:
+      </text>
+      <text x="250" y="620" font-family="Arial, sans-serif" font-size="15" fill="#111827">
+        Av. Senador Salgado Filho, 1234
+      </text>
+      <text x="250" y="643" font-family="Arial, sans-serif" font-size="15" fill="#111827">
+        Bairro: Lagoa Nova
+      </text>
+      
+      <line x1="150" y1="665" x2="670" y2="665" stroke="#e5e7eb" stroke-width="1"/>
+      
+      <!-- Categoria -->
+      <text x="150" y="700" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#6b7280">
+        Categoria
+      </text>
+      <rect x="150" y="710" width="110" height="30" rx="15" fill="#dcfce7"/>
+      <text x="205" y="730" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#22c55e" text-anchor="middle">
+        Iluminação
+      </text>
+      
+      <line x1="150" y1="765" x2="670" y2="765" stroke="#e5e7eb" stroke-width="1"/>
+      
+      <!-- Fotos -->
+      <text x="150" y="800" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#6b7280">
+        📷 Fotos Anexadas
+      </text>
+      
+      <!-- Miniaturas de fotos -->
+      <rect x="150" y="815" width="150" height="120" rx="8" fill="#e5e7eb" stroke="#d1d5db" stroke-width="2"/>
+      <text x="225" y="875" font-family="Arial, sans-serif" font-size="32" fill="#9ca3af" text-anchor="middle">🖼️</text>
+      <text x="225" y="905" font-family="Arial, sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">foto1.jpg</text>
+      
+      <rect x="320" y="815" width="150" height="120" rx="8" fill="#e5e7eb" stroke="#d1d5db" stroke-width="2"/>
+      <text x="395" y="875" font-family="Arial, sans-serif" font-size="32" fill="#9ca3af" text-anchor="middle">🖼️</text>
+      <text x="395" y="905" font-family="Arial, sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">foto2.jpg</text>
+      
+      <line x1="150" y1="960" x2="670" y2="960" stroke="#e5e7eb" stroke-width="1"/>
+      
+      <!-- Informações Adicionais -->
+      <text x="150" y="995" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#6b7280">
+        ℹ️ Informações Adicionais
+      </text>
+      
+      <text x="150" y="1025" font-family="Arial, sans-serif" font-size="14" fill="#6b7280">
+        Autor:
+      </text>
+      <text x="220" y="1025" font-family="Arial, sans-serif" font-size="14" fill="#111827">
+        Lil Livra
+      </text>
+      
+      <text x="150" y="1055" font-family="Arial, sans-serif" font-size="14" fill="#6b7280">
+        Data criada:
+      </text>
+      <text x="250" y="1055" font-family="Arial, sans-serif" font-size="14" fill="#111827">
+        09/12/2025, 21:49:31
+      </text>
+      
+      <text x="150" y="1085" font-family="Arial, sans-serif" font-size="14" fill="#6b7280">
+        Data resolvida:
+      </text>
+      <text x="270" y="1085" font-family="Arial, sans-serif" font-size="14" fill="#111827">
+        09/12/2025, 22:22:16
+      </text>
+      
+      <text x="150" y="1115" font-family="Arial, sans-serif" font-size="14" fill="#6b7280">
+        Última atualização:
+      </text>
+      <text x="295" y="1115" font-family="Arial, sans-serif" font-size="14" fill="#111827">
+        09/12/2025, 22:33:46
+      </text>
+      
+      <!-- Visualizações -->
+      <text x="150" y="1155" font-family="Arial, sans-serif" font-size="14" fill="#6b7280">
+        👁️ Visualizações:
+      </text>
+      <text x="280" y="1155" font-family="Arial, sans-serif" font-size="14" fill="#111827">
+        247
+      </text>
+      
+      <text x="400" y="1155" font-family="Arial, sans-serif" font-size="14" fill="#6b7280">
+        💬 Comentários:
+      </text>
+      <text x="545" y="1155" font-family="Arial, sans-serif" font-size="14" fill="#111827">
+        12
+      </text>
+    </g>
+    
+    <!-- Card Direito - Formulário de Atualização -->
+    <rect x="760" y="240" width="560" height="1100" rx="15" fill="#ffffff" stroke="#e5e7eb" stroke-width="2"/>
+    
+    <!-- Cabeçalho do Form -->
+    <rect x="760" y="240" width="560" height="60" rx="15" fill="#dcfce7"/>
+    <text x="790" y="275" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#166534">
+      ✏️ Atualizar Informações
+    </text>
+    
+    <!-- Formulário -->
+    <g id="update-form">
+      <!-- Título -->
+      <text x="790" y="340" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#374151">
+        Título
+      </text>
+      <rect x="790" y="350" width="500" height="45" rx="8" fill="#ffffff" stroke="#d1d5db" stroke-width="2"/>
+      <text x="805" y="378" font-family="Arial, sans-serif" font-size="15" fill="#9ca3af">
+        Insira o título
+      </text>
+      
+      <!-- Descrição -->
+      <text x="790" y="430" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#374151">
+        Descrição
+      </text>
+      <rect x="790" y="440" width="500" height="100" rx="8" fill="#ffffff" stroke="#d1d5db" stroke-width="2"/>
+      <text x="805" y="468" font-family="Arial, sans-serif" font-size="15" fill="#9ca3af">
+        Insira a descrição
+      </text>
+      
+      <!-- Cidade -->
+      <text x="790" y="580" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#374151">
+        Cidade
+      </text>
+      <rect x="790" y="590" width="500" height="45" rx="8" fill="#ffffff" stroke="#d1d5db" stroke-width="2"/>
+      <text x="805" y="618" font-family="Arial, sans-serif" font-size="15" fill="#9ca3af">
+        Insira a cidade
+      </text>
+      
+      <!-- Endereço -->
+      <text x="790" y="670" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#374151">
+        Endereço
+      </text>
+      <rect x="790" y="680" width="500" height="45" rx="8" fill="#ffffff" stroke="#d1d5db" stroke-width="2"/>
+      <text x="805" y="708" font-family="Arial, sans-serif" font-size="15" fill="#9ca3af">
+        Insira o endereço completo
+      </text>
+      
+      <!-- Categoria -->
+      <text x="790" y="760" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#374151">
+        Categoria
+      </text>
+      <rect x="790" y="770" width="500" height="45" rx="8" fill="#ffffff" stroke="#d1d5db" stroke-width="2"/>
+      <text x="805" y="798" font-family="Arial, sans-serif" font-size="15" fill="#9ca3af">
+        Selecione uma categoria
+      </text>
+      <path d="M 1270 790 L 1275 795 L 1280 790" stroke="#6b7280" stroke-width="2" fill="none" stroke-linecap="round"/>
+      
+      <!-- Status -->
+      <text x="790" y="850" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#374151">
+        Status
+      </text>
+      <rect x="790" y="860" width="500" height="45" rx="8" fill="#ffffff" stroke="#d1d5db" stroke-width="2"/>
+      <text x="805" y="888" font-family="Arial, sans-serif" font-size="15" fill="#9ca3af">
+        Selecione o status
+      </text>
+      <path d="M 1270 880 L 1275 885 L 1280 880" stroke="#6b7280" stroke-width="2" fill="none" stroke-linecap="round"/>
+      
+      <!-- Fotos -->
+      <text x="790" y="940" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#374151">
+        Fotos
+      </text>
+      <rect x="790" y="950" width="500" height="100" rx="8" fill="#f9fafb" stroke="#d1d5db" stroke-width="2" stroke-dasharray="5,5"/>
+      <text x="1040" y="995" font-family="Arial, sans-serif" font-size="32" fill="#9ca3af" text-anchor="middle">📁</text>
+      <text x="1040" y="1025" font-family="Arial, sans-serif" font-size="14" fill="#6b7280" text-anchor="middle">
+        Clique para adicionar ou arraste fotos aqui
+      </text>
+      
+      <!-- Nota informativa -->
+      <rect x="790" y="1075" width="500" height="80" rx="8" fill="#fef3c7"/>
+      <text x="810" y="1100" font-family="Arial, sans-serif" font-size="13" fill="#92400e">
+        💡 Dica: Adicionar fotos atualizadas ajuda a
+      </text>
+      <text x="810" y="1120" font-family="Arial, sans-serif" font-size="13" fill="#92400e">
+        acompanhar o progresso da resolução do
+      </text>
+      <text x="810" y="1140" font-family="Arial, sans-serif" font-size="13" fill="#92400e">
+        problema.
+      </text>
+      
+      <!-- Botões de Ação -->
+      <rect x="790" y="1200" width="240" height="50" rx="25" fill="#ffffff" stroke="#d1d5db" stroke-width="2"/>
+      <text x="910" y="1232" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#6b7280" text-anchor="middle">
+        Cancelar
+      </text>
+      
+      <rect x="1050" y="1200" width="240" height="50" rx="25" fill="#22c55e"/>
+      <text x="1170" y="1232" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">
+        💾 Salvar Alterações
+      </text>
+      
+      <!-- Botão Deletar -->
+      <rect x="790" y="1270" width="500" height="50" rx="25" fill="#ffffff" stroke="#ef4444" stroke-width="2"/>
+      <text x="1040" y="1302" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ef4444" text-anchor="middle">
+        🗑️ Excluir Reclamação
+      </text>
+    </g>
+  </g>
+  
+  <!-- Rodapé -->
+  <rect x="0" y="1420" width="1440" height="380" fill="#166534"/>
+  
+  <text x="120" y="1500" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#ffffff">ReclamaRN</text>
+  <text x="120" y="1535" font-family="Arial, sans-serif" font-size="14" fill="#d1fae5">Melhorando o Rio Grande do Norte,</text>
+  <text x="120" y="1560" font-family="Arial, sans-serif" font-size="14" fill="#d1fae5">uma reclamação de cada vez.</text>
+  
+  <!-- Links Rodapé -->
+  <text x="500" y="1480" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff">Links Úteis</text>
+  <text x="500" y="1510" font-family="Arial, sans-serif" font-size="14" fill="#d1fae5">Início</text>
+  <text x="500" y="1535" font-family="Arial, sans-serif" font-size="14" fill="#d1fae5">Reclamações</text>
+  
+  <text x="900" y="1480" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff">Contato</text>
+  <text x="900" y="1510" font-family="Arial, sans-serif" font-size="14" fill="#d1fae5">Github</text>
+  
+  <!-- Copyright -->
+  <line x1="120" y1="1620" x2="1320" y2="1620" stroke="#22c55e" stroke-width="1"/>
+  <text x="720" y="1660" font-family="Arial, sans-serif" font-size="14" fill="#d1fae5" text-anchor="middle">
+    © 2025 ReclamaRN. Todos os direitos reservados.
+  </text>
+</svg>
