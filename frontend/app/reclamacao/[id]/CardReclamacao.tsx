@@ -83,6 +83,13 @@ export default function CardReclamacao({
                   Contestar reclamação
                 </Button>
               )}
+              <Button
+                onClick={() => {
+                  router.push(`/contestacoes?idReclamacao=${reclamacao.id}`);
+                }}
+              >
+                Contestações
+              </Button>
             </div>
           </div>
         </ul>
