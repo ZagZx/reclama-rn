@@ -30,7 +30,7 @@ export default function Page() {
         {dados.map((dados) => (
           <div key={dados.id} className="p-3 bg-gray-800 rounded-xl">
             <h1 className="text-[20px]">Motivo: {dados.motivo}</h1>
-            <span>Reclamação: </span><Link className="text-blue-400 underline" href={`/reclamacao?id=${dados.reclamacaoId}`}>{dados.tituloReclamacao}</Link>
+            <span>Reclamação: </span><Link className="text-blue-400 underline" href={`/reclamacao/${dados.reclamacaoId}`}>{dados.tituloReclamacao}</Link>
             <p>Autor: {dados.autor}</p>
             <p>Data de contestação: {toLocal(dados.dataContestacao)}</p>
             <div className="flex flex-col justify-center items-center">
