@@ -2,7 +2,6 @@
 
 import { useRouter } from "next/navigation";
 import clsx from "clsx";
-import { useAuth } from "@/context/AuthContext";
 import { Reclamacao } from "@/types";
 import Button from "@/components/ui/Button";
 import { MapPin } from "lucide-react";
@@ -13,15 +12,6 @@ export default function ListaReclamacoes({
   reclamacoes: Reclamacao[];
 }) {
   const router = useRouter();
-  const { usuario } = useAuth();
-
-  async function handleResolver(reclamacaoId: number) {
-    const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
-    await fetch(`${apiUrl}/api/reclamacao/${reclamacaoId}/resolver`, {
-      method: "POST",
-      credentials: "include" as RequestCredentials,
-    });
-  }
 
   return (
     <div className="flex justify-center items-center flex-col gap-3 mx-[20px] text-gray-600 py-10">
@@ -32,16 +22,17 @@ export default function ListaReclamacoes({
         >
           <div className="flex flex-col">
             <div className="flex justify-between">
-              <h3 className="text-xl font-bold">
-                {reclamacao.titulo} - Localização: {reclamacao.endereco ? reclamacao.endereco: "Não informada"}
-              </h3>
+              <h3 className="text-xl font-bold">{reclamacao.titulo}</h3>
             </div>
             <span>{reclamacao.descricao}</span>
           </div>
           <ul className="flex flex-row items-center">
             <li className="flex">
               <MapPin color="#dd0000" />
-              {reclamacao.cidade}, RN
+              {reclamacao.cidade}, RN | <p>&nbsp;</p>
+              {reclamacao.endereco
+                ? reclamacao.endereco
+                : "Localização não informada"}
             </li>
           </ul>
           <div className="flex justify-between">
