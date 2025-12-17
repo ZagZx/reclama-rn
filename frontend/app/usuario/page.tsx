@@ -3,7 +3,7 @@ import Button from "@/components/ui/Button";
 
 export default function Page() {
   return (
-    <div className="flex flex-row gap-[20px] justify-center items-center">
+    <div className="flex flex-row gap-[20px] justify-center items-center py-10">
       <Link href="/usuario/contestacoes">
         <Button>
           Minhas contestações  
