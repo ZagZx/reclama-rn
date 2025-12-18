@@ -1,8 +1,8 @@
-"use client"
-
 const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 export async function getReclamacoesUsuario() {
+    "use client"
+
     const response = await fetch(`${apiUrl}/api/usuario/reclamacoes`, {
         method: "GET",
         credentials: "include" as RequestCredentials,
@@ -17,6 +17,8 @@ export async function getReclamacoesUsuario() {
 }
 
 export async function getContestacoesUsuario() {
+    "use client"
+
     const response = await fetch(`${apiUrl}/api/usuario/contestacoes`, {
         method: "GET",
         credentials: "include" as RequestCredentials,
