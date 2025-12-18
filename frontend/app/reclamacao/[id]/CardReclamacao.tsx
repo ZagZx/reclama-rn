@@ -114,6 +114,7 @@ export default function CardReclamacao({
 
                 {canEdit && (
                   <Button
+                    styles="bg-yellow-600 hover:bg-yellow-800"
                     onClick={() => {
                       router.push(`/reclamacao/${reclamacao.id}/atualizar`);
                     }}
