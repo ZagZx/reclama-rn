@@ -23,6 +23,6 @@ export default async function Page({ params }: PageProps) {
   const reclamacao = response.data.reclamacao;
 
   return (
-    <CardReclamacao reclamacao={reclamacao}/>
+    <CardReclamacao reclamacaoInicial={reclamacao}/>
   );
 }
