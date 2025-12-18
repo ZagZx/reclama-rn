@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 
 export default function Page() {
   const router = useRouter();
-  const [reclamacoes, setReclamacoes] = useState<Reclamacao[]>([]);
+  const [reclamacoes, setReclamacoes] = useState<Reclamacao[] | null>(null);
 
 
   useEffect(()=>
@@ -22,9 +22,11 @@ export default function Page() {
       })();
     }, []
   )
-  
-  
-  if (!reclamacoes || reclamacoes.length === 0) {
+
+  if (!reclamacoes) {
+    return <></>;
+  }
+  if (reclamacoes.length === 0) {
     Swal.fire({
       title: "Minhas Reclamações",
       text: "Você não possui reclamações cadastradas",
@@ -33,12 +35,10 @@ export default function Page() {
   }
   else {
     return(
-      <>
-        <section className="px-20 py-5">
-          <H1>Minhas Reclamações</H1>
-          <ListaReclamacoes reclamacoes={reclamacoes} />
-        </section>
-      </>
+      <section className="px-20 py-5">
+        <H1>Minhas Reclamações</H1>
+        <ListaReclamacoes reclamacoes={reclamacoes} />
+      </section>
     );
   }
 }
