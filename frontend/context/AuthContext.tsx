@@ -5,7 +5,7 @@ import React, { createContext, useContext, useState, useEffect, ReactNode } from
 import { useRouter } from 'next/navigation';
 
 interface Usuario {
-  id: string;
+  id: number;
   nome: string;
   email: string;
 }
