@@ -1,15 +1,9 @@
 import CardReclamacao from "./CardReclamacao";
-import getReclamacao from "./actions";
+import { getReclamacao } from "./actions";
 import { notFound } from "next/navigation";
+import { PageReclamacaoProps } from "./props";
 
-
-interface PageProps {
-  params: {
-    id: string
-  }
-}
-
-export default async function Page({ params }: PageProps) {
+export default async function Page({ params }: PageReclamacaoProps) {
   const { id } = await params;
 
   const reclamacaoId = Number(id);
