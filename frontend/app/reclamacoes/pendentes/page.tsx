@@ -21,19 +21,12 @@ export default async function Page() {
           <Link href="/reclamacoes/resolvidas">
             <Button>Resolvidas</Button>
           </Link>
-          <Link href="/reclamacoes/Contestadas">
+          <Link href="/reclamacoes/contestadas">
             <Button>Contestadas</Button>
           </Link>
         </div>
         <ListaReclamacoes reclamacoes={data.reclamacoes} />
       </section>
     </>
-  );
-  return (
-    <>
-      <AdicionarReclamacaoSection />
-      <ListaReclamacoes reclamacoes={data.reclamacoes}/>
-    </>
-
   );
 }
