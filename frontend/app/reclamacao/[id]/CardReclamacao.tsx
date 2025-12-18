@@ -43,12 +43,12 @@ export default function CardReclamacao({
   }
 
   return (
-    <div className="flex flex-col px-20 py-10 gap-2">
+    <>
       <section>
         <H1>Reclamação</H1>
         <div className="flex flex-col p-3 bg-gray-800 rounded-xl bg-white border-2 border-neutral-200 text-gray-600 gap-2">
           <div className="flex justify-between">
-            <h1 className="text-[20px] font-bold">{reclamacao.titulo}</h1>
+            <h1 className="text-xl font-bold">{reclamacao.titulo}</h1>
             <div className="flex border rounded-lg border-neutral-200">
               <p>Criada: {toLocal(reclamacao.dataCriacao)}</p>
               { reclamacao.status === "Resolvida" && reclamacao.dataResolucao ? 
@@ -71,7 +71,7 @@ export default function CardReclamacao({
               } */}
             </div>
           </div>
-          <h3 className="text-[15px]">{reclamacao.descricao}</h3>
+          <p className="">{reclamacao.descricao}</p>
           <ul className="flex gap-2 flex-col">
             <li className="flex">
               <MapPin color="#dd0000" />
@@ -148,6 +148,6 @@ export default function CardReclamacao({
       ) : (
         <></>
       )}
-    </div>
+    </>
   );
 }

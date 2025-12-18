@@ -5,6 +5,7 @@ import ListaReclamacoes from "@/components/ui/ListaReclamacoes";
 import { useEffect, useState } from "react";
 import { getReclamacoesUsuario } from "../actions";
 import { Reclamacao } from "@/types";
+import { H1 } from "@/components/ui/titles";
 
 export default function Page() {
   const [reclamacoes, setReclamacoes] = useState<Reclamacao[] | null>(null);
@@ -24,7 +25,10 @@ export default function Page() {
     return(
       <>
         <AdicionarReclamacaoSection />
-        <ListaReclamacoes reclamacoes={reclamacoes} />
+        <section className="px-20 py-10">
+          <H1>Minhas Reclamações</H1>
+          <ListaReclamacoes reclamacoes={reclamacoes} />
+        </section>
       </>
     );
   }

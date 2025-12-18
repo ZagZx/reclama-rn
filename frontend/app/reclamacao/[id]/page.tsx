@@ -23,6 +23,8 @@ export default async function Page({ params }: PageProps) {
   const reclamacao = response.data.reclamacao;
 
   return (
-    <CardReclamacao reclamacaoInicial={reclamacao}/>
+    <div className="flex flex-col px-20 py-5 gap-2">
+      <CardReclamacao reclamacaoInicial={reclamacao}/>
+    </div>
   );
 }
